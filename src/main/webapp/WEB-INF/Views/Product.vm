@@ -1,8 +1,29 @@
 <html>
 <head>
+
+	 <script src="/MudStore/resources/js/jquery-1.11.1.min.js"></script>	
+	 #[[
+	 <script type="text/javascript">
+		 function getPrice(productId) {
+		 var priceUrl= productId+"/price"
+		
+       $.ajax({
+           	 url 	: priceUrl,
+           	 success: function(data) {
+           		$("#price").html("price: Rs "+data) 		
+            },
+            error:function(status){
+            alert('in error');}
+        }); 
+    }
+ </script>
+ ]]#
     <title>Mudstore</title>
 </head>
+ 
+ 
 <body>
+<div id="msgid"></div>
 	#set ( $image= $product.id +".jpg")
 <P id='MudStore Home' align='left'><H1>MudStore<H1></P>
 	<table>
@@ -18,8 +39,14 @@
 					<td>$product.Type</td>
 				</tr>
 				<tr>
-					<td>Price:</td>
-					<td>$product.Price</td>
+					#set ( $productPriceURL="product/"+$product.Id+"/price")
+					<td>
+						<form>
+							<input type="button" id="button" name="Price" value="Price" onclick="getPrice($product.Id)"/>
+						</form>
+					</td>
+				
+					
 				</tr>
 			</table>
 		</TD>
@@ -28,5 +55,7 @@
 			<IMG SRC="/MudStore/resources/images/products/$image"/>
 		</TD>
 	</TR>
+	</table>
+	<div id="price"></div>
 </body>
 </html>

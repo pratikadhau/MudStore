@@ -31,24 +31,27 @@ public class LoginController {
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView getLoginPage() {
 		Credential credential = new Credential();
-		ModelAndView modelAndView = new ModelAndView("Login", "credential",	credential);
+		ModelAndView modelAndView = new ModelAndView("Login", "credential",
+				credential);
 		modelAndView.addObject("errorMessage", "");
 		return modelAndView;
 	}
 
-	@RequestMapping(value = { "/doLogin" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/verifyCredentail" }, method = RequestMethod.POST)
 	public ModelAndView login(
 			@ModelAttribute("credential") Credential credential) {
-		try{
-		 Credential loginUserCredential = loginService.login(credential);
-		 User user = userService.getUserByUserName(loginUserCredential);
-		 ModelAndView modelAndView = new ModelAndView("Home", "user", user);
-		 List<Product> products = productService.getAllProducts();
-		 modelAndView.addObject("products", products);
-		 return modelAndView;
-		}catch(InvalidCredential invalidCredential){
-			ModelAndView modelAndView = new ModelAndView("Login", "credential",	credential);
-			modelAndView.addObject("errorMessage", invalidCredential.getMessage());
+		try {
+			Credential loginUserCredential = loginService.login(credential);
+			User user = userService.getUserByUserName(loginUserCredential);
+			ModelAndView modelAndView = new ModelAndView("Home", "user", user);
+			List<Product> products = productService.getAllProducts();
+			modelAndView.addObject("products", products);
+			return modelAndView;
+		} catch (InvalidCredential invalidCredential) {
+			ModelAndView modelAndView = new ModelAndView("Login", "credential",
+					credential);
+			modelAndView.addObject("errorMessage",
+					invalidCredential.getMessage());
 			return modelAndView;
 		}
 	}
