@@ -5,17 +5,31 @@
 	 #[[
 	 <script type="text/javascript">
 		 function getPrice(productId) {
-		 var priceUrl= productId+"/price"
+			 var priceUrl= productId+"/price"
+			   $.ajax({
+		           	 url 	: priceUrl,
+		           	 success: function(data) {
+		           		$("#price").html("price: Rs "+data) 		
+		            },
+		            error:function(status){
+		            alert('in error');}
+		        }); 
+    		}
 		
-       $.ajax({
-           	 url 	: priceUrl,
-           	 success: function(data) {
-           		$("#price").html("price: Rs "+data) 		
-            },
-            error:function(status){
-            alert('in error');}
-        }); 
-    }
+    		function addToCart(productId) {
+			 var addToCartURL= "http://localhost:8080/MudStore/cart"
+			 alert(addToCartURL);
+			   $.ajax({
+		           	 url 	: addToCartURL,
+		           	 type	: "POST",
+		           	 data	: "productId=1&cartId=1",
+		           	 success: function(data) {
+		           		$("#price").html(data)	
+		            },
+		            error:function(status){
+		            alert('in error');}
+		        }); 
+    		}
  </script>
  ]]#
     <title>Mudstore</title>
@@ -43,6 +57,7 @@
 					<td>
 						<form>
 							<input type="button" id="button" name="Price" value="Price" onclick="getPrice($product.Id)"/>
+							<input type="button" id="button2" name="addProductToCart" value="Add to cart" onclick="addToCart($product.Id)"/>
 						</form>
 					</td>
 				

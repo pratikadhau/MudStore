@@ -1,5 +1,8 @@
 package com.mudstore.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Product {
 	private Integer id;
 	private String name;

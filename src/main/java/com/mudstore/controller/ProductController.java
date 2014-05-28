@@ -26,4 +26,5 @@ public class ProductController {
 	public String getProductPrice(@PathVariable("id")Integer productId){
 		return productService.getPrice(productId).toString();
 	}
+	
 }
