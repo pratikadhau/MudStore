@@ -2,7 +2,6 @@ package com.mudstore.model;
 
 public class Product {
 	private Integer id;
-
 	private String name;
 	private String type;
 	private Double price;

@@ -39,6 +39,11 @@
 				
 			</td>
 		</tr>
+		<tr >
+			<td >
+				<div id="loginerror"><font color="red">$errorMessage</font></login>
+			</td>
+		</tr>
 		<tr>
 			<td >
 				<input type="submit" id="login" name="login" value="Login">
@@ -54,13 +59,7 @@
 			<td >
 			<a href="resources/userguide.pdf" target="_blank">user guide</a>
 			</td></tr>
-		<tr >
-			<td >
-				#if(!$successFlag)
-					<font color="red">Password is incorrect. Please try again</font>
-				#end
-			</td>
-		</tr>
+		
 		</tbody>
 	</table>
 	</div>

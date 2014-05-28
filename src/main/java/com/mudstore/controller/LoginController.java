@@ -9,17 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mudstore.exception.InvalidCredential;
 import com.mudstore.model.Credential;
 import com.mudstore.model.Product;
 import com.mudstore.model.User;
+import com.mudstore.service.LoginService;
 import com.mudstore.service.ProductService;
-import com.mudstore.service.UserLoginService;
 import com.mudstore.service.UserService;
 
 @Controller
 public class LoginController {
 	@Autowired
-	private UserLoginService userLoginService;
+	private LoginService loginService;
 
 	@Autowired
 	private ProductService productService;
@@ -30,26 +31,24 @@ public class LoginController {
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView getLoginPage() {
 		Credential credential = new Credential();
-		ModelAndView modelAndView = new ModelAndView("Login", "credential",
-				credential);
-		modelAndView.addObject("successFlag", true);
+		ModelAndView modelAndView = new ModelAndView("Login", "credential",	credential);
+		modelAndView.addObject("errorMessage", "");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = { "/doLogin" }, method = RequestMethod.POST)
 	public ModelAndView login(
 			@ModelAttribute("credential") Credential credential) {
-		Boolean successful = userLoginService.isValid(credential);
-		if (successful) {
-			User user = userService.getUserByUserName(credential.getUsername());
-			ModelAndView modelAndView = new ModelAndView("Home", "user", user);
-			List<Product> products = productService.getAllProducts();
-			modelAndView.addObject("products", products);
-			return modelAndView;
-		} else {
-			ModelAndView modelAndView = new ModelAndView("Login", "credential",
-					credential);
-			modelAndView.addObject("successFlag", false);
+		try{
+		 Credential loginUserCredential = loginService.login(credential);
+		 User user = userService.getUserByUserName(loginUserCredential);
+		 ModelAndView modelAndView = new ModelAndView("Home", "user", user);
+		 List<Product> products = productService.getAllProducts();
+		 modelAndView.addObject("products", products);
+		 return modelAndView;
+		}catch(InvalidCredential invalidCredential){
+			ModelAndView modelAndView = new ModelAndView("Login", "credential",	credential);
+			modelAndView.addObject("errorMessage", invalidCredential.getMessage());
 			return modelAndView;
 		}
 	}
