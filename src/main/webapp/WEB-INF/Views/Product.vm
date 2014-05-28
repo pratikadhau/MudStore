@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Mudstore</title>
+</head>
+<body>
+	#set ( $image= $product.id +".jpg")
+<P id='MudStore Home' align='left'><H1>MudStore<H1></P>
+	<table>
+	<TR>
+		<TD>
+			<table border="1">
+				<tr>
+					<td>Name:</td>
+					<td>$product.Name</td>
+				</tr>
+				<tr>
+					<td>Type:</td>
+					<td>$product.Type</td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td>$product.Price</td>
+				</tr>
+			</table>
+		</TD>
+		<TD ALIGN="LEFT">
+			
+			<IMG SRC="/MudStore/resources/images/products/$image"/>
+		</TD>
+	</TR>
+</body>
+</html>

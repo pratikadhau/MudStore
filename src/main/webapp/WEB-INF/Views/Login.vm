@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>Mudstore Login</title>
+</head>
+<body>
+<P id='MudStore Login' align='center'>MudStore Login</P>
+<form name="registration" id="registration" method="POST" action="doLogin">
+<P id='MudStoreLoginInput' align='center'></P>	
+<div align="right">
+	<table cellspacing="0" cellpadding="0" border="0" align="center">
+		<tbody>
+		<tr>
+			<td colspan="2">
+				<img src="resources/images/login.jpg"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				User Name
+			</td>
+		</tr>
+		<tr>		
+			<td>
+			#springBind("credential.username")
+				<input type="text" id="username" name="${status.expression}"
+                         value="$!status.value" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Password
+			</td>
+		</tr>
+		<tr>
+			<td>
+			#springBind("credential.password")
+				<input type="password" id="password" name="${status.expression}"
+                         value="$!status.value" />
+				
+			</td>
+		</tr>
+		<tr>
+			<td >
+				<input type="submit" id="login" name="login" value="Login">
+				<input type="reset" name="cancel" value="Cancel">
+			</td>
+		</tr>
+		<tr>
+			<td >
+				<a href="signup"><img src="resources/images/signup.jpg"/></a>
+			</td>
+		</tr>
+		<tr>
+			<td >
+			<a href="resources/userguide.pdf" target="_blank">user guide</a>
+			</td></tr>
+		<tr >
+			<td >
+				#if(!$successFlag)
+					<font color="red">Password is incorrect. Please try again</font>
+				#end
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	</div>
+	</P>
+	</form>
+		
+</body>
+</html>
+	

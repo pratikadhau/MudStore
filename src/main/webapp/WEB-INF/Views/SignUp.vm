@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title>SignUp </title>
+</head>
+<script type="text/javascript">
+function checkForm(form)
+  {
+  	if(form.password.value!=form.password2.value){
+	  	form.password.value="";
+	  	form.password2.value="";
+	  	alert("passwords are not matching")
+	  	return false;
+  	}
+  	return true;
+  }
+</script>
+<body>
+<form name="SignUp" id="registration" method="POST" action="doSignUp" onsubmit="return checkForm(this)">
+	<table cellspacing="0" cellpadding="0" border="0" align="center">
+		<tbody>
+		<tr>
+			<td>
+				Please enter username.
+			</td>
+			</tr>
+		<tr>
+			<td>
+			#springBind("credential.username")
+				<input type="text" id="username" name="${status.expression}"
+                         value="$!status.value" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Please enter full name. 
+			</td>
+			</tr>
+		<tr>
+			<td>
+			#springBind("user.name")
+				<input type="text" id="name" name="${status.expression}"
+                         value="$!status.value" />
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Please enter email_id. 
+			</td>
+			</tr>
+		<tr>
+			<td>
+			#springBind("user.email")
+				<input type="text" id="email" name="${status.expression}"
+                         value="$!status.value" />
+				
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Please enter password. 
+			</td>
+			</tr>
+		<tr>
+		<tr>
+			<td>
+			#springBind("credential.password")
+				<input type="password" id="password" name="${status.expression}"
+                         value="$!status.value" />
+				<label for="error" form="registration"></label>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Please re-enter password. 
+			</td>
+			</tr>
+		<tr>
+		<tr>
+			<td>
+				<input type="password" id="password2" name ="password2"/>
+			</td>
+		</tr>
+		<tr align="center">
+			<td colspan="2">
+				<input type="submit">
+				<input type="reset" name="cancel" value="Cancel">
+			</td>
+		</tr>
+		
+		</tbody>
+	</table>
+	</form>
+	</body>
+	</html>

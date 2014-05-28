@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Mudstore</title>
+</head>
+<body>
+<P id='MudStore Home' align='left'><H1>MudStore<H1></P>
+<form name="registration" id="registration" method="POST" action="doLogin">
+
+<P id='MudStoreWelcome' align=''>Welcome $user.Name</P>	
+
+	<table cellspacing="0" cellpadding="0" border="0" align="center">
+		<tbody>
+		<tr>
+			<td>
+				Products
+			</td>
+			<td>
+			</td>
+		</tr>
+		#foreach($product in $products)
+		<tr>
+			<td>
+				<a href="product/$product.Id"><H3>$product.Name</H3></a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		#end
+		</tbody>
+	</table>
+	</P>
+	</form>
+</body>
+</html>
+	
