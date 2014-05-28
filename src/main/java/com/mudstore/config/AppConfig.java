@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
 import org.springframework.web.servlet.view.velocity.VelocityViewResolver;
 
 @EnableWebMvc
-@ComponentScan(basePackages={"com.mudstore.controller","com.mudstore.service"})
+@ComponentScan(basePackages={"com.mudstore.controller","com.mudstore.service","com.mudstore.rest.controller"})
 @Configuration
 public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean
