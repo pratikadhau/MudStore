@@ -21,7 +21,7 @@ public class ProductRestController {
 	ProductService productService;
 	
 	@GET
-	@Produces(MediaType.TEXT_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}")
 	public Product getProduct(@PathParam("id") Integer productId){
 		return productService.getProduct(productId);

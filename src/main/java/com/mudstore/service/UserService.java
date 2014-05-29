@@ -8,6 +8,9 @@ import com.mudstore.model.User;
 @Service
 public class UserService {
 
+	/*
+	 * Retrieve user by username.
+	 * */
 	public User getUserByUserName(Credential loginUserCredential) {
 		User user = new User();
 		user.setName(loginUserCredential.getUsername());

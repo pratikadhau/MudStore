@@ -5,7 +5,7 @@
 	 #[[
 	 <script type="text/javascript">
 		 function getPrice(productId) {
-			 var priceUrl= productId+"/price"
+			 var priceUrl= "/MudStore/product/"+productId+"/price"
 			   $.ajax({
 		           	 url 	: priceUrl,
 		           	 success: function(data) {
@@ -17,8 +17,7 @@
     		}
 		
     		function addToCart(productId) {
-			 var addToCartURL= "http://localhost:8080/MudStore/cart"
-			 alert(addToCartURL);
+			 var addToCartURL= "/MudStore/cart"
 			   $.ajax({
 		           	 url 	: addToCartURL,
 		           	 type	: "POST",
