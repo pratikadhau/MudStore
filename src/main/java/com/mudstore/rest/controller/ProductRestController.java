@@ -1,12 +1,13 @@
 package com.mudstore.rest.controller;
 
-import java.util.List;
-
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,9 +28,11 @@ public class ProductRestController {
 		return productService.getProduct(productId);
 	}
 	
-	@GET
-	@Produces(MediaType.TEXT_XML)
-	public List<Product> getAllProduct(){
-		return productService.getAllProducts();
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response getAllProduct(Product product){
+		System.out.println(product);
+		System.out.println("success");
+		return Response.status(200).entity(null).build();
 	}
 }
