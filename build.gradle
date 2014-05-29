@@ -1,0 +1,44 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'jetty'
+
+
+version=""
+group="com.pratik"
+archivesBaseName="MudStore"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  compile 'org.springframework:spring-core:3.2.8.RELEASE' 
+  compile 'org.springframework:spring-web:3.2.8.RELEASE'
+  compile 'org.springframework:spring-webmvc:3.2.8.RELEASE'
+  compile 'org.springframework:spring-context-support:3.1.0.RELEASE'
+  compile 'org.apache.velocity:velocity:1.7'
+  compile 'org.apache.velocity:velocity-tools:2.0'
+  compile 'com.sun.jersey:jersey-server:1.18.1'
+  compile 'com.sun.jersey:jersey-servlet:1.18.1'
+  compile 'com.sun.jersey.contribs:jersey-spring:1.18.1'
+  compile 'com.sun.jersey:jersey-core:1.18.1'
+  testCompile'org.mockito:mockito-all:1.9.5'
+  testCompile 'org.seleniumhq.selenium:selenium-server:2.41.0'
+  testCompile 'junit:junit:4.4'
+  
+ }
+
+task deploylocal() << {
+	copy{
+	  from "${buildDir}\\libs"
+	  into "C:/apache-tomcat-6.0.39/webapps"
+	  include '*.war'
+	}
+  }
+
+
+  
+
+ 
+ 
