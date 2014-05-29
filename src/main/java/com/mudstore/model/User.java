@@ -1,7 +1,7 @@
 package com.mudstore.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
-
+//First Comment
 @XmlRootElement
 public class User {
 	private String name;
