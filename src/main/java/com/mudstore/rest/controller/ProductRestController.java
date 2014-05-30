@@ -30,9 +30,10 @@ public class ProductRestController {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response getAllProduct(Product product){
+	@Produces(MediaType.APPLICATION_JSON)
+	public Product getAllProduct(Product product){
 		System.out.println(product);
 		System.out.println("success");
-		return Response.status(200).entity(null).build();
+		return product;
 	}
 }

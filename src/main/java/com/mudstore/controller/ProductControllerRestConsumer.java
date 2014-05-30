@@ -34,8 +34,8 @@ public class ProductControllerRestConsumer {
 		
 		WebResource resource2 = client.resource("http://localhost:8080/MudStore/rest/product/");
 		Builder builder = resource2.type(MediaType.APPLICATION_JSON);
-		builder.accept(MediaType.APPLICATION_JSON).post(product);
-		
+		Product productResponse=builder.accept(MediaType.APPLICATION_JSON).post(Product.class,product);
+		System.out.println(productResponse);
 //		RestTemplate  restTemplate=new RestTemplate();
 //		Response response=restTemplate.postForObject("http://localhost:8080/MudStore/rest/product/", product, Response.class);
 		
