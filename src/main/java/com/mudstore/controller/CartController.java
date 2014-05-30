@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 
 public class CartController {
-	@RequestMapping(value="/cart1",method=RequestMethod.POST)
+	@RequestMapping(value="/cart",method=RequestMethod.POST)
 	@ResponseBody
 	public String addProductToCart(@RequestParam("productId")Integer productId,@RequestParam("cartId") Integer cartId){
 		System.out.println("Product "+productId+ " is added to cart "+cartId);
