@@ -37,7 +37,7 @@ public class LoginController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = { "/verifyCredentail" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/verifyCredential" }, method = RequestMethod.POST)
 	public ModelAndView login(
 			@ModelAttribute("credential") Credential credential) {
 		try {

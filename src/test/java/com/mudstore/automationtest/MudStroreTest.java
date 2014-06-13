@@ -10,20 +10,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MudStroreTest {
 
-	@Ignore
+    @Ignore
 	@Test
 	public void shouldLoginAndGetDeails() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "c:/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "/home/lt013962/Downloads/chromedriver");
 		WebDriver webDriver = new ChromeDriver();
-		webDriver.get("http://localhost:8080/Mudstore/login");
+		webDriver.get("http://localhost:8080/MudStore/");
 		Assert.assertEquals("Mudstore Login", webDriver.getTitle());
 
 		WebElement username = webDriver.findElement(By.id("username"));
-		String userNameInput = "prat";
+		String userNameInput = "pratik";
 		username.sendKeys(userNameInput);
 		Thread.sleep(1000);
 		WebElement password = webDriver.findElement(By.id("password"));
-		password.sendKeys("Adhau");
+		password.sendKeys("adhau");
 		Thread.sleep(1000);
 		password.submit();
 		Thread.sleep(1000);
@@ -32,5 +32,6 @@ public class MudStroreTest {
 		WebElement welcomeMessage = webDriver.findElement(By.id("MudStoreWelcome"));
 		Assert.assertEquals("Welcome Pratik Adhau", welcomeMessage.getText());
 		webDriver.quit();
+
 	}
 }

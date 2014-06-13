@@ -4,7 +4,7 @@
 </head>
 <body>
 <P id='MudStore Login' align='center'>MudStore Login</P>
-<form name="registration" id="registration" method="POST" action="verifyCredentail">
+<form name="registration" id="registration" method="POST" action="verifyCredential">
 <P id='MudStoreLoginInput' align='center'></P>	
 <div align="right">
 	<table cellspacing="0" cellpadding="0" border="0" align="center">
