@@ -26,9 +26,26 @@ task integTest(type: Test) {
     classpath = sourceSets.integTest.runtimeClasspath
 }
 
-integTest.dependsOn(jettyRun)
+TOMCAT_HOME = "/home/lt013962/installed/apache-tomcat-8.0.8"
+TOMCAT_BIN = TOMCAT_HOME +"/bin"
+TOMCAT_WEBAPP=TOMCAT_HOME +"/webapps"
+TOMCAT_START=TOMCAT_BIN+"/startup.sh"
+TOMCAT_STOP=TOMCAT_BIN+"/shutdown.sh"
+task deploylocal() {
+	copy{
+	  from "${buildDir}/libs"
+	  into TOMCAT_WEBAPP
+	  include '*.war'
+	}
+}
+
+
+
+
+
 
 check.dependsOn(integTest)
+
 
 dependencies {
   compile 'org.springframework:spring-core:3.2.8.RELEASE' 
@@ -57,13 +74,7 @@ dependencies {
   integTestRuntime configurations.testRuntime
  }
 
-task deploylocal() << {
-	copy{
-	  from "${buildDir}\\libs"
-	  into "C:/apache-tomcat-6.0.39/webapps"
-	  include '*.war'
-	}
-  }
+
 
 
 
