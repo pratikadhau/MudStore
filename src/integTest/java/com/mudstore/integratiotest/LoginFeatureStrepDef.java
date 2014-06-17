@@ -6,15 +6,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class LoginFeatureStrepDef {
 
-	WebDriver driver = new ChromeDriver();
+	WebDriver driver = new FirefoxDriver();
 	private String username=null;
-	static {System.setProperty("webdriver.chrome.driver", "/home/lt013962/Downloads/chromedriver");}
 	
 	@When("^I entered username (\\S+) and password (\\S+).")
 	public void I_enter_username(String username, String password) throws InterruptedException{
